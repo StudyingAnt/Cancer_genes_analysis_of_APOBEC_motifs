@@ -1,12 +1,18 @@
 # Data downloading and preprocessing
-## Requirements
-| Program | Version |
-| --- | --- |
-| `git status` | List all *new or modified* files |
-| `git diff` | Show file differences that **haven't been** staged |
+
 ## Downloading GENCODE 
-To download GENCODE protein coding sequence, change `/path/to/download/` in the file `download_genecode.sh` to the path you want to download tha file and run the script. 
+To download GENCODE protein coding transcripts sequence, change `/path/to/download/` in the file `download_genecode.sh` to the path you want to download tha file and run the script. 
 
 ```console
 ./download_genecode.sh
 ```
+
+## Preprocessing GENCODE
+The file download with above script contains not only coding sequence (CDS) but also 5' untranslated region (5'UTR) and 3' untranslated region (3'UTR). 
+In addition, several transcripts have deprecated coding sequences. This scripts extract only CDS portion of valid transcripts that can produce polypeptide.
+
+## Requirements
+| Package | Version used in this study|
+| --- | --- |
+| Biopython | 1.81 |
+| `git diff` | Show file differences that **haven't been** staged |

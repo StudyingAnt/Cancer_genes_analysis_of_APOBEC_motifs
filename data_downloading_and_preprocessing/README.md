@@ -5,7 +5,7 @@
 | `git status` | List all *new or modified* files |
 | `git diff` | Show file differences that **haven't been** staged |
 ## Downloading GENCODE 
-To download GENCODE protein coding sequence, change `/path/to/download` to the path you want to download tha file and run the script `download_genecode.sh`. 
+To download GENCODE protein coding sequence, change `/path/to/download/` in the file `download_genecode.sh` to the path you want to download tha file and run the script. 
 
 ```console
 ./downlaod_genecode.sh

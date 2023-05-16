@@ -96,3 +96,8 @@ Run following command in terminal to set `shmsim` location.
 PATH_TO_CDUR=/path/to/cdur/you/have/
 sed -i "s+~/CDUR/shmsim+${PATH_TO_CDUR}/shmsim+g" ${PATH_TO_CDUR}/CDUR.py
 ```
+
+## Run CDUR to all transcripts
+```console
+./run_cdur_all_gencode.sh
+```

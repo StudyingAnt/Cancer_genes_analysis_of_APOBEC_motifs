@@ -8,5 +8,5 @@
 To download GENCODE protein coding sequence, change `/path/to/download/` in the file `download_genecode.sh` to the path you want to download tha file and run the script. 
 
 ```console
-./downlaod_genecode.sh
+./download_genecode.sh
 ```

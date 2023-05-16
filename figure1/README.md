@@ -24,6 +24,13 @@ conda install -c conda-forge biopython=1.77 –yes
 
 ### Change makefile
 Add `-I$${HOME}/miniconda3/envs/cdur/include -L$${HOME}/miniconda3/envs/cdur/lib` before `-o` option.
+**Original**
+```Makefile
+all:
+	g++ -O3 HotspotStatisticsReporter.cpp util.cpp StateVector.cpp Sequence.cpp Mutation.cpp scharff_utils.cpp ContinuousHistogram.cpp GeneticCode.cpp DiscreteHistogram.cpp MotifReference.cpp MotifIdentifier.cpp Motif.cpp EgnetProperties.cpp FrequencyDependentRandomizer.cpp Properties.cpp SequenceDataset.cpp StatsSampler.cpp BivariateNormalConditional.cpp generate.cpp analysis.cpp MotifMutationPair.cpp MotifMutationFrequency.cpp StatsSampler2Vars.cpp SimpleFastaReader.cpp RandomizedIota.cpp -I./ -I./tnt -o shmsim -lgsl -lgslcblas -lm -O
+
+```
+**Modified**
 ```Makefile
 all:
 	g++ -O3 HotspotStatisticsReporter.cpp util.cpp StateVector.cpp Sequence.cpp Mutation.cpp scharff_utils.cpp ContinuousHistogram.cpp GeneticCode.cpp DiscreteHistogram.cpp MotifReference.cpp MotifIdentifier.cpp Motif.cpp EgnetProperties.cpp FrequencyDependentRandomizer.cpp Properties.cpp SequenceDataset.cpp StatsSampler.cpp BivariateNormalConditional.cpp generate.cpp analysis.cpp MotifMutationPair.cpp MotifMutationFrequency.cpp StatsSampler2Vars.cpp SimpleFastaReader.cpp RandomizedIota.cpp -I./ -I./tnt -I$${HOME}/miniconda3/envs/cdur/include -L$${HOME}/miniconda3/envs/cdur/lib -o shmsim -lgsl -lgslcblas -lm -O

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-DOWNLOAD_PATH="/path/to/download" # CHANGE HERE
+DOWNLOAD_PATH="/path/to/download/" # CHANGE HERE
 
 release_num=40
 

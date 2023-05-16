@@ -14,5 +14,7 @@ In addition, several transcripts have deprecated coding sequences. This scripts 
 ### Requirements
 | Package | Version used in this study|
 | --- | --- |
+| Ubuntu | Ubuntu 20.04.6 LTS |
+| Python | 3.9.16 |
 | Biopython | 1.81 |
-| `git diff` | Show file differences that **haven't been** staged |
+

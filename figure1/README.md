@@ -24,6 +24,7 @@ conda install -c conda-forge biopython=1.77 –yes
 
 ### Change makefile
 Add `-I$${HOME}/miniconda3/envs/cdur/include -L$${HOME}/miniconda3/envs/cdur/lib` before `-o` option.
+
 **Original**
 ```Makefile
 all:
@@ -38,6 +39,7 @@ all:
 ```
 ### Modify CDUR.py
 From line 362, please modify original code as following to use `-o` and `-d` option.
+
 **Original**
 ```Python
     if args.motifs is not None:
@@ -87,7 +89,9 @@ From line 362, please modify original code as following to use `-o` and `-d` opt
             except Exception:
                 pass
 ```
+
 Run following command in terminal to set `shmsim` location.
+
 ```console
 PATH_TO_CDUR=/path/to/cdur/you/have/
 sed -i "s+~/CDUR/shmsim+${PATH_TO_CDUR}/shmsim+g" ${PATH_TO_CDUR}/CDUR.py

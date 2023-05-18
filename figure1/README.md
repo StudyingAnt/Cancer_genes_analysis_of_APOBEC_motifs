@@ -1,6 +1,6 @@
 ## How to install CDUR
 CDUR was developed before `Biopython 1.78`, and utilize `Bio.Alphabet` module now removed.
-Here we provide how to install CDUR in `conda` environment.
+Here we provide a way to install CDUR in `conda` environment.
 
 ### Make `conda` envirionment
 ```console

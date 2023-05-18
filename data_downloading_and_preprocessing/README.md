@@ -33,11 +33,7 @@ First, run `extract_name_id.sh` to generate CSV file containing only name and En
 ./extract_name_id.sh
 ```
 
-Second run `reduce_num_sequence.R` to retrieve Ensembl transcript ids.  
-
-```console
-rscript reduce_num_sequence.R
-```
+Second, run `reduce_num_sequence.R` to retrieve Ensembl transcript ids. 
 
 Lastly, run `reduce_num_transcripts.py` to generate FASTA file.
 

@@ -8,7 +8,7 @@ cdur_file <- paste(base_path, "cdur.gencode.v40.pc_transcripts.nopary.cdsonly.re
 cdur_data <- read.table(file = cdur_file,  sep = ',', header = TRUE)
 
 cdur_plot <- ggplot(cdur_data, aes(x=Motif_under.representation, y=Mutational_susceptibility)) + 
-  geom_point(size=0.45, alpha=0.5, fill = "black", stroke = 0.01) +
+  geom_point(size=0.45, alpha=0.35, fill = "black", stroke = 0.01) +
   geom_hline(yintercept = 0.05, linewidth=0.2) +
   geom_hline(yintercept = 0.95, linewidth=0.2) +
   geom_vline(xintercept = 0.05, linewidth=0.2) +
@@ -37,5 +37,8 @@ cdur_plot <- ggMarginal(
   yparams = list(binwidth = 0.01, linewidth = 0.1)
 )
 
+out_file <- paste(base_path, "cdur_plot_refseq_transcripts.tiff", sep="")
+ggsave(out_file, plot = cdur_plot, dpi = 600, width = 134, height = 134, device='tiff', units = "mm")
+
 out_file <- paste(base_path, "cdur_plot_refseq_transcripts.png", sep="")
-ggsave(out_file, plot = cdur_plot, dpi = 1000, width = 100, height = 100, units = "mm")
+ggsave(out_file, plot = cdur_plot, dpi = 600, width = 134, height = 134, units = "mm")

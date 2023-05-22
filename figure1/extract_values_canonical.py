@@ -43,11 +43,13 @@ for cnt, seq_record in enumerate(SeqIO.parse(canonical_file, "fasta")):
     run2_file = Path(PurePath(base_path, f"cdur_canonical_run2", filename))
     run3_file = Path(PurePath(base_path, f"cdur_canonical_run3", filename))
     if run1_file.is_file() and run2_file.is_file() and run3_file.is_file():
+        print(seq_id)
         rlt1 = pd.read_table(run1_file, sep="\t", header=None, names=["Property", "Value"])
         rlt2 = pd.read_table(run2_file, sep="\t", header=None, names=["Property", "Value"])
         rlt3 = pd.read_table(run3_file, sep="\t", header=None, names=["Property", "Value"])
         
         motif_underrep1 = rlt1.loc[rlt1["Property"] == "belowT_C_"]["Value"].values[0]
+        print(rlt2.loc[rlt2["Property"] == "belowT_C_"]["Value"])
         motif_underrep2 = rlt2.loc[rlt2["Property"] == "belowT_C_"]["Value"].values[0]
         motif_underrep3 = rlt3.loc[rlt3["Property"] == "belowT_C_"]["Value"].values[0]
 

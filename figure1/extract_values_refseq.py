@@ -14,7 +14,7 @@ base_path = "/mnt/c/Users/CEEL-PC-005/Desktop/Joon/Final_scripts/Cancer_genes_an
 release_num = 40
 
 # fasta file input
-refseq_file = Path(PurePath(base_path, f"gencode.v{release_num}.pc_transcripts.nopary.cdsonly.canonical.fa"))
+refseq_file = Path(PurePath(base_path, f"gencode.v{release_num}.pc_transcripts.nopary.cdsonly.refseq.fa"))
 
 # for every record in the file
 transcript_names = []
@@ -39,9 +39,9 @@ for cnt, seq_record in enumerate(SeqIO.parse(refseq_file, "fasta")):
     filename = filename.replace(":","_")
     filename = f"{filename}_n3results.txt"
 
-    run1_file = Path(PurePath(base_path, f"cdur_canonical_run1", filename))
-    run2_file = Path(PurePath(base_path, f"cdur_canonical_run2", filename))
-    run3_file = Path(PurePath(base_path, f"cdur_canonical_run3", filename))
+    run1_file = Path(PurePath(base_path, f"cdur_refseq_run1", filename))
+    run2_file = Path(PurePath(base_path, f"cdur_refseq_run2", filename))
+    run3_file = Path(PurePath(base_path, f"cdur_refseq_run3", filename))
     if run1_file.is_file() and run2_file.is_file() and run3_file.is_file():
         rlt1 = pd.read_table(run1_file, sep="\t", header=None, names=["Property", "Value"])
         rlt2 = pd.read_table(run2_file, sep="\t", header=None, names=["Property", "Value"])

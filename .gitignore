@@ -208,3 +208,6 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# log files
+*.log

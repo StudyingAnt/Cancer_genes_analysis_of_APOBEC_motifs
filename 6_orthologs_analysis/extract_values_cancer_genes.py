@@ -4,8 +4,8 @@ from pathlib import Path, PurePath
 
 # directory to input and output files
 base_path = "/mnt/c/Users/CEEL-PC-005/Desktop/Joon/Final_scripts/Cancer_genes_analysis_of_APOBEC_motifs_test/" # CHANGE HERE
-orthologs_path = Path(PurePath(base_path, "all_control_genes_orthologs"))
-human_trajs_path = Path(PurePath(base_path, "all_trajs_all_control_genes_human"))
+orthologs_path = Path(PurePath(base_path, "all_cancer_genes_orthologs"))
+human_trajs_path = Path(PurePath(base_path, "all_trajs_all_cancer_genes_human"))
 
 genenames = []
 species = []
@@ -32,7 +32,7 @@ df = pd.DataFrame(
     }
 )
     
-df.to_csv(Path(PurePath(base_path, f"all_control_genes_orthologs_cdur.csv")), index=False)
+df.to_csv(Path(PurePath(base_path, f"all_cancer_genes_orthologs_cdur.csv")), index=False)
 
 n_traj_per_transcript = 10
 
@@ -64,5 +64,5 @@ df = pd.DataFrame(
     }
 )
     
-df.to_csv(Path(PurePath(base_path, f"all_trajs_all_control_genes_human_cdur.csv")), index=False)
+df.to_csv(Path(PurePath(base_path, f"all_trajs_all_cancer_genes_human_cdur.csv")), index=False)
 

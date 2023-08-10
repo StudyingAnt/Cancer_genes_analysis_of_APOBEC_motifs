@@ -4,7 +4,7 @@ library(ggExtra)
 library(extrafont)
 
 base_path <- "C:/Users/CEEL-PC-005/Desktop/Joon/Final_scripts/Cancer_genes_analysis_of_APOBEC_motifs_test/"
-cdur_file <- paste(base_path, "cdur.gencode.v40.pc_transcripts.nopary.cdsonly.refseq.gc.csv", sep = "")
+cdur_file <- paste(base_path, "cdur.pteropus_alecto_pc_transcripts.tyc.csv", sep = "")
 cdur_data <- read.table(file = cdur_file,  sep = ',', header = TRUE)
 
 cdur_plot <- ggplot(cdur_data, aes(x=Motif_under.representation, y=Mutational_susceptibility)) + 
@@ -17,8 +17,8 @@ cdur_plot <- ggplot(cdur_data, aes(x=Motif_under.representation, y=Mutational_su
 cdur_plot <- cdur_plot + 
   scale_y_reverse() +
   labs(
-    x= "Motif under-representation (p-value)",
-    y= "Mutational susceptibility (p-value)"
+    x = "Motif under-representation (p-value)",
+    y = "Mutational susceptibility (p-value)"
   ) +
   theme_light() +
   theme(
@@ -37,12 +37,12 @@ cdur_plot <- ggMarginal(
   yparams = list(binwidth = 0.01, linewidth = 0.1)
 )
 
-out_file <- paste(base_path, "cdur_plot_refseq_transcripts_gc.tiff", sep="")
+out_file <- paste(base_path, "cdur_plot_palecto_refseq_transcripts_tyc.tiff", sep="")
 ggsave(out_file, plot = cdur_plot, dpi = 600, width = 134, height = 134, device='tiff', units = "mm")
 
-out_file <- paste(base_path, "cdur_plot_refseq_transcripts_gc.png", sep="")
+out_file <- paste(base_path, "cdur_plot_palecto_refseq_transcripts_tyc.png", sep="")
 ggsave(out_file, plot = cdur_plot, dpi = 1200, width = 85, height = 85, units = "mm")
 
-out_file <- paste(base_path, "cdur_plot_refseq_transcripts_small_gc.png", sep="")
+out_file <- paste(base_path, "cdur_plot_palecto_refseq_transcripts_small_tyc.png", sep="")
 ggsave(out_file, plot = cdur_plot, dpi = 1200, width = 65, height = 65, units = "mm")
 

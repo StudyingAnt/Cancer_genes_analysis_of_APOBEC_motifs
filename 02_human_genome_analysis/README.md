@@ -1,7 +1,7 @@
 # CDUR analysis of human genome
 
 ## Requirement
-For this analysis, you need to install CDUR previously devoloped in [Shapiro, Meier & MacCarthy 2018](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2161-y). You can found in [CDUR GitLab](https://gitlab.com/maccarthyslab/CDUR) page. If you followed the instruction but failed to run, follow **[How to install CDUR](## How to install CDUR)** instructions below
+For this analysis, you need to install CDUR previously devoloped in [Shapiro, Meier & MacCarthy 2018](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2161-y). You can found in [CDUR GitLab](https://gitlab.com/maccarthyslab/CDUR) page. If you followed the instruction but failed to run, follow [**How to install CDUR**](##-How-to-install-CDUR) instructions below
 
 | Package | Version used in this study|
 | --- | --- |

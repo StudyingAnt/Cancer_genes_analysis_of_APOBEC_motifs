@@ -11,7 +11,7 @@ from Bio.SeqRecord import SeqRecord
 base_path = "/mnt/c/Users/CEEL-PC-005/Desktop/Joon/Final_scripts/Cancer_genes_analysis_of_APOBEC_motifs_test/" # CHANGE HERE
 
 # fasta file input
-refseq_file = Path(PurePath(base_path, f"caenorhabditis_elegans_pc_transcripts.fa"))
+refseq_file = Path(PurePath(base_path, f"loxodonta_africana_pc_transcripts.fa"))
 
 # for every record in the file
 transcript_names = []
@@ -35,9 +35,9 @@ for cnt, seq_record in enumerate(SeqIO.parse(refseq_file, "fasta")):
     filename = filename.replace(":","_")
     filename = f"{filename}_n3results.txt"
 
-    run1_file = Path(PurePath(base_path, f"cdur_celegans_refseq_run1", filename))
-    run2_file = Path(PurePath(base_path, f"cdur_celegans_refseq_run2", filename))
-    run3_file = Path(PurePath(base_path, f"cdur_celegans_refseq_run3", filename))
+    run1_file = Path(PurePath(base_path, f"loxodonta_africana", f"loxodonta_africana", f"cdur_lafricana_run1", filename))
+    run2_file = Path(PurePath(base_path, f"loxodonta_africana", f"loxodonta_africana", f"cdur_lafricana_run1", filename))
+    run3_file = Path(PurePath(base_path, f"loxodonta_africana", f"loxodonta_africana", f"cdur_lafricana_run1", filename))
     if run1_file.is_file() and run2_file.is_file() and run3_file.is_file():
         rlt1 = pd.read_table(run1_file, sep="\t", header=None, names=["Property", "Value"])
         rlt2 = pd.read_table(run2_file, sep="\t", header=None, names=["Property", "Value"])
@@ -54,8 +54,8 @@ for cnt, seq_record in enumerate(SeqIO.parse(refseq_file, "fasta")):
         motif_underrep_avg = np.mean([motif_underrep1, motif_underrep2, motif_underrep3])
         mut_suscept_avg = np.mean([mut_suscept1, mut_suscept2, mut_suscept3])
 
-        motif_underrep_std = np.std([motif_underrep1, motif_underrep2, motif_underrep3])
-        mut_suscept_std = np.std([mut_suscept1, mut_suscept2, mut_suscept3])
+        motif_underrep_std = 0#np.std([motif_underrep1, motif_underrep2, motif_underrep3])
+        mut_suscept_std = 0#np.std([mut_suscept1, mut_suscept2, mut_suscept3])
 
         refseq_id = "_".join(seq_id_list[:2])
         gene_symbol = "-".join(seq_id_list[5:-1])
@@ -90,4 +90,4 @@ df = pd.DataFrame(
     }
 )
     
-df.to_csv(Path(PurePath(base_path, f"cdur.caenorhabditis_elegans_pc_transcripts.tc.csv")), index=False)
+df.to_csv(Path(PurePath(base_path, f"cdur.loxodonta_africana_pc_transcripts.tc.csv")), index=False)

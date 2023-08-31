@@ -39,21 +39,21 @@ for cnt, seq_record in enumerate(SeqIO.parse(refseq_file, "fasta")):
     filename = filename.replace(":","_")
     filename = f"{filename}_n3results.txt"
 
-    run1_file = Path(PurePath(base_path, f"human_tyc", f"cdur_tyc_refseq_run1", filename))
-    run2_file = Path(PurePath(base_path, f"human_tyc", f"cdur_tyc_refseq_run2", filename))
-    run3_file = Path(PurePath(base_path, f"human_tyc", f"cdur_tyc_refseq_run3", filename))
+    run1_file = Path(PurePath(base_path, f"cdur_refseq_run1", filename))
+    run2_file = Path(PurePath(base_path, f"cdur_refseq_run2", filename))
+    run3_file = Path(PurePath(base_path, f"cdur_refseq_run3", filename))
     if run1_file.is_file() and run2_file.is_file() and run3_file.is_file():
         rlt1 = pd.read_table(run1_file, sep="\t", header=None, names=["Property", "Value"])
         rlt2 = pd.read_table(run2_file, sep="\t", header=None, names=["Property", "Value"])
         rlt3 = pd.read_table(run3_file, sep="\t", header=None, names=["Property", "Value"])
         
-        motif_underrep1 = rlt1.loc[rlt1["Property"] == "belowG_C_"]["Value"].values[0]
-        motif_underrep2 = rlt2.loc[rlt2["Property"] == "belowG_C_"]["Value"].values[0]
-        motif_underrep3 = rlt3.loc[rlt3["Property"] == "belowG_C_"]["Value"].values[0]
+        motif_underrep1 = rlt1.loc[rlt1["Property"] == "belowT_C_"]["Value"].values[0]
+        motif_underrep2 = rlt2.loc[rlt2["Property"] == "belowT_C_"]["Value"].values[0]
+        motif_underrep3 = rlt3.loc[rlt3["Property"] == "belowT_C_"]["Value"].values[0]
 
-        mut_suscept1 = 1-rlt1.loc[rlt1["Property"] == "repTrFrac_belowG_C_"]["Value"].values[0]
-        mut_suscept2 = 1-rlt2.loc[rlt2["Property"] == "repTrFrac_belowG_C_"]["Value"].values[0]
-        mut_suscept3 = 1-rlt3.loc[rlt3["Property"] == "repTrFrac_belowG_C_"]["Value"].values[0]
+        mut_suscept1 = 1-rlt1.loc[rlt1["Property"] == "repTrFrac_belowT_C_"]["Value"].values[0]
+        mut_suscept2 = 1-rlt2.loc[rlt2["Property"] == "repTrFrac_belowT_C_"]["Value"].values[0]
+        mut_suscept3 = 1-rlt3.loc[rlt3["Property"] == "repTrFrac_belowT_C_"]["Value"].values[0]
 
         motif_underrep_avg = np.mean([motif_underrep1, motif_underrep2, motif_underrep3])
         mut_suscept_avg = np.mean([mut_suscept1, mut_suscept2, mut_suscept3])
@@ -97,4 +97,4 @@ df = pd.DataFrame(
     }
 )
     
-df.to_csv(Path(PurePath(base_path, f"cdur.gencode.v{release_num}.pc_transcripts.nopary.cdsonly.refseq.gc.csv")), index=False)
+df.to_csv(Path(PurePath(base_path, f"cdur.gencode.v{release_num}.pc_transcripts.nopary.cdsonly.refseq.tc.csv")), index=False)

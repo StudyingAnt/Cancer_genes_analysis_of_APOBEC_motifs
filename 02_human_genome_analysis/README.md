@@ -9,8 +9,20 @@ For this analysis, you need to install CDUR previously developed in [Shapiro, Me
 | Biopython | 1.77 (for CDUR), 1.79 |
 | CDUR | |
 
-## 
+## Run CDUR
+This will run CDUR for all sequences in `gencode.v40.pc_transcripts.nopary.cdsonly.refseq.fa`. Three replicates will be generated in separate folders.
+```console
+./run_cdur_refseq.sh
+```
 
+## Extract motif under-representation and mutational susceptibility values
+This will generate `cdur.gencode.v40.pc_transcripts.nopary.cdsonly.refseq.tc.csv` file containing motif under-representation and mutational susceptibility to draw figure.
+```console
+python3 extract_values_refseq_TC.py
+```
+
+## Draw Figure1a
+One can use R script `draw_cdur_plot_refseq.r` to generate CDUR plot **Figure 1a** in the manuscript.
 
 ## How to install CDUR
 CDUR was developed before `Biopython 1.78`, and utilize `Bio.Alphabet` module now removed.

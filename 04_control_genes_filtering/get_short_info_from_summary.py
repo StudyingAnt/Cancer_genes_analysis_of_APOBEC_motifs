@@ -9,14 +9,6 @@ json_file = Path(PurePath(base_path, "all_human.json"))
 with open(json_file, "r") as f:
     data = json.load(f)
 
-#print(data["genes"][52]["gene"].keys())
-#print(data["genes"][52]["gene"]['transcripts'])
-
-#ensembl_transcripts = []
-#for i in range(len(data["genes"][52]["gene"]['transcripts'])):
-#    ensembl_transcripts.append(data["genes"][52]["gene"]['transcripts'][i]['ensembl_transcript'])
-
-#print(ensembl_transcripts)
 output_file = Path(PurePath(base_path, "ncbi_human.tsv"))
 with open(output_file, "w") as o:
     o.write(f"gene_id\tensembl_gene_ids\tensembl_transcripts_ids\tsymbol\tsynonyms\ttax_id\ttaxname\tchromosomes\tcommon_name\tdescription\torientation\ttype\n")

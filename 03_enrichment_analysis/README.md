@@ -5,7 +5,7 @@ One can use R script `gene_enrichment_analysis_refseq.r` to extract top-left and
 
 ## ShinyGO
 We used [ShinyGO 0.77](http://bioinformatics.sdstate.edu/go/) for gene enrichment analysis. We used default parameters as in below table. We downloaded the result `Top Pathways shown above`.
-| Package | Version used in this study|
+| Parameter | Value |
 | --- | --- |
 | Species | Human |
 | FDR cutoff | 0.05 |

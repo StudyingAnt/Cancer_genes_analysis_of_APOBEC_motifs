@@ -1,10 +1,4 @@
 from pathlib import Path, PurePath
-from Bio import SeqIO
-from Bio.Seq import Seq
-from Bio.SeqRecord import SeqRecord
-
-from Bio import Entrez
-
 import pandas as pd
 
 
@@ -14,28 +8,10 @@ cancer_genes_path = Path(PurePath(base_path, "cancer_genes_orthologs"))
 control_genes_path = Path(PurePath(base_path, "control_genes_orthologs"))
 
 species_of_interest = [
-    "Pan troglodytes",
-    "Canis lupus familiaris",
-    "Mus musculus",
-    "Physeter catodon",
-    "Loxodonta africana",
-    "Myotis lucifugus",
-    "Gallus gallus",
-    "Xenopus tropicalis",
-    "Petromyzon marinus",
     "Pteropus alecto"
 ]
 
 species_short = [
-    "ptroglodytes",
-    "clupus",
-    "mmusculus",
-    "pcatodon",
-    "lafricana",
-    "mlucifugus",
-    "ggallus",
-    "xtropicalis",
-    "pmarinus",
     "palecto"
 ]
 
@@ -50,7 +26,6 @@ for i, species in enumerate(species_of_interest):
             data_table = pd.read_csv(data_table_file, sep="\t")
                
             new_infos = data_table[data_table["Taxonomic Name"] == species]
-            #print(new_infos)
 
             if not new_infos.empty:
                 if infos.empty:
@@ -75,7 +50,6 @@ for i, species in enumerate(species_of_interest):
             data_table = pd.read_csv(data_table_file, sep="\t")
                
             new_infos = data_table[data_table["Taxonomic Name"] == species]
-            #print(new_infos)
 
             if not new_infos.empty:
                 if infos.empty:

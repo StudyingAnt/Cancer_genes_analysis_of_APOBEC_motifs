@@ -1,5 +1,4 @@
 #install.packages('colormap')
-
 library(ggplot2)
 library(colormap)
 library(magick)
@@ -16,7 +15,8 @@ library(extrafont)
 ending_timepoint <- 600
 nsim <- 100
 
-exp_path <- "C:/Users/CEEL-PC-005/Desktop/Joon/Final_scripts/Spacial_model/A3_mutation_rate_3e-6/"
+exp_path <- "C:/Users/CEEL-PC-005/Desktop/Joon/Final_scripts/Spacial_model/A3_mutation_rate_1e-6/"
+
 exp_names <- c("Single_A3_Off", "Single_A3_On")
 
 times <- c()
@@ -259,20 +259,6 @@ div_plot
 ggsave(paste(exp_path, "Figures/genetic_heterogeneity_onoff.png", sep = ""), div_plot, dpi = 1200, width = 85, height = 60, units = "mm")
 
 
-fit_plot <- ggplot(everything_plot_df, aes(x=time, y=fit_avg, ymin=fit_avg-fit_std, ymax=fit_avg+fit_std )) + 
-  geom_line(aes(color = experiment)) +
-  geom_ribbon(aes(x=time, y=fit_avg, ymin=fit_avg-fit_std, ymax=fit_avg+fit_std, fill=experiment), alpha=0.25, linewidth = 0) +
-  ylab("Heterogeneity") + xlab("Time") +
-  theme(
-    axis.title.x = element_text(size = 8, family = "Arial"), #24
-    axis.title.y = element_text(size = 8, family = "Arial"), #24
-    axis.text.x = element_text(size = 6, family = "Arial"), # 18
-    axis.text.y = element_text(size = 6, family = "Arial"), # 18
-  )+ scale_x_continuous(limits=c(0,ending_timepoint), expand=c(0,0))+ scale_y_continuous(limits=c(0,max(everything_plot_df$fit_avg+0.5)), expand=c(0,0))
-fit_plot
-ggsave(paste(exp_path, "Figures/fitness_heterogeneity_onoff.png", sep = ""), fit_plot, width = 15, height = 10, units = "in")
-
-
 #####################################################
 exp_names <- c("Uniform_A3_On", "Skewed_A3_On")
 
@@ -384,37 +370,10 @@ div_plot
 
 ggsave(paste(exp_path, "Figures/genetic_heterogeneity_uniskew.png", sep = ""), div_plot, dpi = 1200, width = 85, height = 60, units = "mm")
 
-
-fit_plot <- ggplot(everything_plot_df, aes(x=time, y=fit_avg, ymin=fit_avg-fit_std, ymax=fit_avg+fit_std )) + 
-  geom_line(aes(color = experiment)) +
-  geom_ribbon(aes(x=time, y=fit_avg, ymin=fit_avg-fit_std, ymax=fit_avg+fit_std, fill=experiment), alpha=0.25, linewidth = 0) +
-  ylab("Heterogeneity") + xlab("Time") +
-  theme(
-    axis.title.x = element_text(size = 8, family = "Arial"), #24
-    axis.title.y = element_text(size = 8, family = "Arial"), #24
-    axis.text.x = element_text(size = 6, family = "Arial"), # 18
-    axis.text.y = element_text(size = 6, family = "Arial"), # 18
-  )+ scale_x_continuous(limits=c(0,ending_timepoint), expand=c(0,0))+ scale_y_continuous(limits=c(0,max(everything_plot_df$fit_avg+0.5)), expand=c(0,0))
-fit_plot
-ggsave(paste(exp_path, "Figures/fitness_heterogeneity_uniskew.png", sep = ""), fit_plot, width = 15, height = 10, units = "in")
-
-
-
-
-
-
-
-
-
-
 ##############################################################################
-
-
 ending_timepoint <- 600
 
-
-
-exp_path <- "C:/Users/CEEL-PC-005/Desktop/Joon/Final_scripts/Spacial_model/A3_mutation_rate_1e-6_longer/"
+exp_path <- "C:/Users/CEEL-PC-005/Desktop/Joon/Final_scripts/Spacial_model/A3_mutation_rate_1e-6/"
 exp_names <- c("Single_A3_Off", "Single_A3_On")
 exp_names <- c("Uniform_A3_On", "Skewed_A3_On")
 
@@ -479,82 +438,6 @@ for (exp_name in exp_names){
   }
   
 }
-
-################################################################################
-ending_timepoint <- 1000
-nsim <- 100
-
-exp_path <- "C:/Users/CEEL-PC-005/Desktop/Joon/hal_test/Exp26_thisone/"
-exp_names <- c("Uniform", "Skewed")
-times <- c()
-genotype_heterogeneity <- c()
-fitness_heterogeneity <- c()
-groupname <- c()
-genotype_nums <- c()
-seednums <- c()
-sidxs <- c()
-
-for (exp_name in exp_names){
-  setwd(paste(exp_path, exp_name, "/", sep = ""))
-  
-  info_file <- paste(exp_path, exp_name, "/", "_infos.csv", sep = "")
-  infos_df <- read.csv(info_file, check.names = F, header = T)
-  
-  basal_name <- names(infos_df)[1]
-  basename <- strsplit(basal_name, split="seed")[[1]][1]
-  
-  all_seeds <- unlist(infos_df[,1])
-  
-  for (i in 1:nsim) {
-    seed <- all_seeds[i]
-    
-    everything_file <- paste(exp_path, exp_name, "/", basename, "seed", as.character(seed), "sim0.csv", sep = "")
-    everything_df <- read.csv(everything_file, check.names = F, header = F)
-    
-    time <- unlist(everything_df[1,])
-    genotypes <- unlist(everything_df[31,])
-    fitnesses <- unlist(everything_df[30,])
-    nums <- unlist(everything_df[32,])
-    exps <- rep(exp_name, length(time))
-    seednum <- rep(seed, length(time))
-    sidx <- rep(i, length(time))
-    
-    times <- c(times, time)
-    genotype_heterogeneity <- c(genotype_heterogeneity, genotypes)
-    fitness_heterogeneity <- c(fitness_heterogeneity, fitnesses)
-    groupname <- c(groupname, exps)
-    genotype_nums <- c(genotype_nums, nums)
-    seednums <- c(seednums, seednum)
-    sidxs <- c(sidxs, sidx)
-    
-  }
-  
-  
-}
-
-everything_plot_df <- data.frame(
-  time = times,
-  genotype_heterogeneity = genotype_heterogeneity,
-  number_of_genotypes = genotype_nums,
-  fitness_heterogeneity = fitness_heterogeneity,
-  experiment = groupname,
-  seed = seednums,
-  seed_idx = sidxs
-  
-)
-
-everything_plot_df
-
-everything_plot_df %>%
-  group_by(experiment) %>%
-  filter(time == 600) %>%
-  arrange(genotype_heterogeneity)
-  filter(genotype_heterogeneity == min(genotype_heterogeneity))
-
-everything_plot_df %>%
-  group_by(experiment) %>%
-  filter(time == 600) %>%
-  filter(genotype_heterogeneity == max(genotype_heterogeneity))
 
 
 

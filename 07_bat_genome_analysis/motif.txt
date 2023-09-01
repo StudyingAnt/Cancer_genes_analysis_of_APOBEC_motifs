@@ -1,2 +1,0 @@
-TY_C_	BOTH
-T_C_	BOTH

@@ -1,4 +1,4 @@
-# Cancer genes analysis of APOBEC motifs
+# Cancer-associated genes analysis of APOBEC motifs
 ## Introduction
 This GitHub repository contains scripts to recapitulate all figures and results of the paper. Cytidine Deaminase Under-representation Reporter (CDUR) can be downloaded from the GitLab repository (https://gitlab.com/maccarthyslab/CDUR)<sup>1</sup>. 
 
